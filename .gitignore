@@ -19,3 +19,14 @@
 
 # Go workspace file
 go.work
+
+# Mac OS X files
+.DS_Store
+
+# Ignore certificate and key files
+certs
+*.crt
+*.key
+
+# Resource examples for preparing test environment on local machine
+example.local
