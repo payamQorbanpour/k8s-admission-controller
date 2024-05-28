@@ -30,3 +30,9 @@ certs
 
 # Resource examples for preparing test environment on local machine
 example.local
+
+# Mirrord files
+.mirrord
+
+# Editor files
+.vscode
