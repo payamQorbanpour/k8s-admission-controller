@@ -6,6 +6,7 @@ import (
 	"net/http"
 
 	admissionv1 "k8s.io/api/admission/v1"
+	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 )
 
 func handleRequests(w http.ResponseWriter, r *http.Request) {
@@ -22,8 +23,11 @@ func handleRequests(w http.ResponseWriter, r *http.Request) {
 	}
 
 	review.Response = &admissionv1.AdmissionResponse{
-		UID:     review.Request.UID, // Ensure the UID is echoed back in the response
-		Allowed: true,               // Replace this with your actual authorization logic
+		UID:     review.Request.UID,
+		Allowed: false, //TODO: Replace this with actual authorization logic
+		Result: &metav1.Status{
+			Message: "Unauthorized",
+		},
 	}
 
 	response, err := json.Marshal(review)
